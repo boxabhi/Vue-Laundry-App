@@ -1,79 +1,114 @@
 <template>
-  <v-container>
+  <div>
+    <Appbar />
+    <v-container>
+      <h4 class="text-center mt-5 mb-2 text-uppercase">Add to Cart</h4>
+    
+      <v-list subheader class="mt-5" v-for="product in allProducts" :key="product.id">
 
-    <h2>This is a Cart Page</h2>
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-img :src="`https://kamallaundry.herokuapp.com${product.image}`"></v-img>
 
-    <v-card class="mt-5">
-      <v-row v-for="cart in carts" v-bind:key="cart.id">
-        <v-col cols="md-1">
+          </v-list-item-avatar>
 
-        </v-col>
-        <v-col cols="md-2">
-          <router-link :to="`/product/${cart.product.slug}`">
-            <v-img :src="cart.product.image" height="200" width="100"></v-img>
-          </router-link>
-        </v-col>
-        <v-col cols="md-2">
-          <h2>{{cart.product.product}}</h2>
-          <v-btn small color="error">Rs.{{cart.product.price}}</v-btn>
-          <v-btn color="success" small>
-            <v-icon>mdi-cart</v-icon>{{cart.product.discount}}
-          </v-btn>
-          <p>{{cart.product.description}}</p>
-        </v-col>
-        <v-col cols="md-2"></v-col>
-        <v-col cols="md-4 mt-5">
-          <v-btn color="primary" small>Buy Now</v-btn>
-          <v-btn color="dark" small class="ml-3" @click="remove(cart.product.id)" :data-product="cart.product.id">Remove
-          </v-btn>
-        </v-col>
+          <v-list-item-content>
+            <v-list-item-title class="text-capitalize">{{product.product}}</v-list-item-title>
+            <p>{{product.price}}/-</p>
+          </v-list-item-content>
 
-      </v-row>
-    </v-card>
+          <v-list-item-icon>
 
-  </v-container>
+            <v-btn icon color="pink">
+              <v-icon @click="added(product.id , product.product)">mdi-plus</v-icon>
+            </v-btn>
+            <v-btn color="pink" dark @click="added(product.id,product.product)">
+              Add
+            </v-btn>
+             <v-snackbar v-model="snackbar">
+      {{ text }}
+      <v-btn color="pink" text >
+        Close
+      </v-btn>
+    </v-snackbar>
+            <v-btn icon color="pink" @click="remove(product.id, product.product)" v-if="total" >
+              <v-icon>mdi-minus</v-icon>
+            </v-btn>
+          </v-list-item-icon>
+        </v-list-item>
+      </v-list>
+
+      <v-divider></v-divider>
+
+    </v-container>
+
+
+
+    <v-bottom-sheet v-model="sheet" persistent>
+
+      <v-sheet class="text-center" height="200px">
+
+        <v-list-item-avatar tile size="100">
+          <v-img class="login-img" src="@/assets/washing/iron.svg"></v-img>
+        </v-list-item-avatar>
+        <p>Item Added to Cart</p>
+
+      </v-sheet>
+    </v-bottom-sheet>
+  </div>
 </template>
 
 
 
 <script>
-  import axios from "axios";
+  // @ is an alias to /src
 
+  import Appbar from '@/components/utils/Appbar.vue'
+  import {
+    mapGetters,
+    mapActions
+  } from 'vuex';
+  
   export default {
-    data() {
-      return {
-
-        carts: {},
-        total: 0
-
-      }
+    name: 'Home',
+    components: {
+      Appbar
     },
+    data: () => ({
+      sheet: false,
+      snackbar: false,
+      text : '',
+  
+    }),
     created() {
-      this.getCart()
+      this.fetchProducts()
+      this.allCarts()
     },
+    computed: mapGetters(['allProducts' , 'carts' ,'total']),
     methods: {
-      async getCart() {
-        const carts = await axios.get('http://127.0.0.1:8000/api/cart', {
-          headers: {
-            Authorization: 'Token ' + localStorage.getItem('user')
-          }
-        })
-        this.carts = carts.data
-      },
-      async remove(id) {
-        var data = {
-          product: id
-        }
-        const headers = {
-          Authorization: 'Token ' + localStorage.getItem('user')
-        }
-        const removeItem = await axios.delete('http://127.0.0.1:8000/api/cart', {
-          data,
-          headers
-        })
-        console.log(removeItem)
-      }
+      ...mapActions(['fetchProducts', 'allCarts']),
 
-    }
+      added(id, product) {
+        this.snackbar = true
+        console.log(id , product)
+        this.$store.commit('setCart' , id)
+        console.log(this.carts)
+        this.text = product + ' Added to Cart'
+        setTimeout(() => {
+          this.snackbar = false
+        }, 500)
+      },
+
+      remove(id , product){
+       
+        this.snackbar = true
+        this.$store.commit('removeCart' , id)
+        this.text = product + ' Removed from Cart'
+        setTimeout(()=>{
+          this.snackbar = false
+        } , 500)
+      }
+    },
+
   }
 </script>

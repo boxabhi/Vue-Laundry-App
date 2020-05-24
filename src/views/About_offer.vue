@@ -1,0 +1,260 @@
+<template>
+    <div>
+        <Appbar />
+
+
+
+        <div class="background">
+
+
+
+            <div class="container text-center">
+
+                <div class="panel pricing-table">
+                    <h3 class="text-center mb-5 mt-5">Studetn Plan</h3>
+                    <table class="table ">
+
+                        <thead class="mb-4">
+                            <tr class="mb-4">
+                                <th scope="col"><b> Benefits </b></th>
+                                <th scope="col"><b>Present</b></th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="pt-5 mt-5">
+
+                            <tr style="width : 80px !important" class="mt-5">
+                                <th width="" style="max-width:10px" class="text-left">Home Pickup </th>
+                                <td>
+                                    <v-list-item-avatar size="26">
+                                        <v-img src="@/assets/washing/icons/interface.svg"></v-img>
+                                    </v-list-item-avatar>
+                                </td>
+
+                            </tr>
+
+                            <tr style="width : 80px !important" class="mt-5">
+                                <th width="" style="max-width:10px" class="text-left">Home Deliver </th>
+                                <td>
+                                    <v-list-item-avatar size="26">
+                                        <v-img src="@/assets/washing/icons/interface.svg"></v-img>
+                                    </v-list-item-avatar>
+                                </td>
+
+                            </tr>
+
+
+                            <v-btn class="error" dark>Buy</v-btn>
+                            <button id="razor" @click="razor()" ref="razor" refs="razor">Pay</button>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<script>
+    import Appbar from '@/components/utils/Appbar.vue'
+    //  import Razorpay from 'razorpay'
+    export default {
+        name: 'Home',
+        components: {
+            Appbar
+        },
+        data() {
+            return {
+
+                options: {
+                    "key_id": "rzp_test_dqCdqfA4kpY2ei",
+                    "key": "rzp_test_dqCdqfA4kpY2ei",
+                    "amount": "50000",
+                    "currency": "INR",
+                    "name": "Acme Corp",
+                    "description": "Test Transaction",
+                    "key_secret": "RE3Jlzenl4cfYhfdkKcOkey6",
+                    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+    },
+                }
+
+            }
+        },
+        created() {
+
+        },
+        methods: {
+            async razor() {
+                let rzp = new window.Razorpay(this.options);
+                rzp.open();
+
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    html {
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    .background {
+        padding: 0 25px 25px;
+        position: relative;
+        width: 100%;
+    }
+
+    .background::after {
+        content: '';
+        background: #60a9ff;
+        background: -moz-linear-gradient(top, #60a9ff 0%, #4394f4 100%);
+        background: -webkit-linear-gradient(top, #60a9ff 0%, #4394f4 100%);
+        background: linear-gradient(to bottom, #60a9ff 0%, #4394f4 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#60a9ff', endColorstr='#4394f4', GradientType=0);
+        height: 350px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    @media (min-width: 900px) {
+        .background {
+            padding: 0 0 25px;
+        }
+    }
+
+    .container {
+        margin: 0 auto;
+        padding: 50px 0 0;
+        max-width: 960px;
+        width: 100%;
+    }
+
+    .panel {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 15px 25px;
+        position: relative;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .pricing-table {
+        box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media (min-width: 900px) {
+        .pricing-table {
+            flex-direction: row;
+        }
+    }
+
+    .pricing-table * {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .pricing-plan {
+        border-bottom: 1px solid #e1f1ff;
+        padding: 25px;
+    }
+
+    .pricing-plan:last-child {
+        border-bottom: none;
+    }
+
+    @media (min-width: 900px) {
+        .pricing-plan {
+            border-bottom: none;
+            border-right: 1px solid #e1f1ff;
+            flex-basis: 100%;
+            padding: 25px 50px;
+        }
+
+        .pricing-plan:last-child {
+            border-right: none;
+        }
+    }
+
+    .pricing-img {
+        margin-bottom: 25px;
+        max-width: 100%;
+    }
+
+    .pricing-header {
+        color: #888;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .pricing-features {
+        color: #016FF9;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin: 50px 0 25px;
+    }
+
+    .pricing-features-item {
+        border-top: 1px solid #e1f1ff;
+        font-size: 12px;
+        line-height: 1.5;
+        padding: 15px 0;
+    }
+
+    .pricing-features-item:last-child {
+        border-bottom: 1px solid #e1f1ff;
+    }
+
+    .pricing-price {
+        color: #016FF9;
+        display: block;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .pricing-button {
+        border: 1px solid #9dd1ff;
+        border-radius: 10px;
+        color: #348EFE;
+        display: inline-block;
+        margin: 25px 0;
+        padding: 15px 35px;
+        text-decoration: none;
+        transition: all 150ms ease-in-out;
+    }
+
+    .pricing-button:hover,
+    .pricing-button:focus {
+        background-color: #e1f1ff;
+    }
+
+    .pricing-button.is-featured {
+        background-color: #48aaff;
+        color: #fff;
+    }
+
+    .pricing-button.is-featured:hover,
+    .pricing-button.is-featured:active {
+        background-color: #269aff;
+    }
+
+
+    th {
+        font-weight: 500;
+    }
+</style>

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Appbar />
-
+    
     <v-carousel cycle height="150" hide-delimiter-background show-arrows-on-hover>
       <v-carousel-item>
         <v-img class="img" src="@/assets/washing/banner.jpg"></v-img>
@@ -103,26 +102,26 @@
       <h2 class="font-weight-bold">Active Orders</h2>
 
 
-      <v-list >
+      <v-list>
         <template>
-          <v-subheader ></v-subheader>
+          <v-subheader></v-subheader>
 
           <v-divider></v-divider>
           <v-list-item v-for="n in 4" v-bind:key="n">
-            
+
             <v-list-item-avatar>
               <v-img src="@/assets/washing/icons/interface.svg"></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-title > Order No - #199233</v-list-item-title>
+              <v-list-item-title> Order No - #199233</v-list-item-title>
               <p class="text-primary" color="red">Order Confirmed</p>
             </v-list-item-content>
 
             <v-avatar tile color="blue">
-      <v-icon dark>mdi-delete</v-icon>
-    </v-avatar>
-          
+              <v-icon dark>mdi-delete</v-icon>
+            </v-avatar>
+
           </v-list-item>
         </template>
       </v-list>
@@ -131,7 +130,7 @@
 
 
 
-  <div class="m-5 p-5"></div>
+    <div class="m-5 p-5"></div>
 
 
   </div>
@@ -141,11 +140,10 @@
 
 
 <script>
-  import Appbar from '@/components/utils/Appbar.vue'
-
+  
   export default {
     components: {
-      Appbar,
+     
 
 
     },
