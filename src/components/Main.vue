@@ -7,24 +7,27 @@
       <v-carousel-item>
         <v-img class="img" src="@/assets/washing/banner.jpg"></v-img>
       </v-carousel-item>
-        <a href="whatsapp://send?text=Use My coupon code of Kamal Wash to get 50rs. instant cash back. Kamal wash is the best laundry service provider. 
-                   link https://kamalwash.com/
-        " data-action="share/whatsapp/share">
+      
       <v-carousel-item>
         <v-img class="img" src="@/assets/washing/refer.jpg"></v-img>
       </v-carousel-item>
-        </a>
+        
 
          
       
-         <a href="whatsapp://send?text=Use My coupon code of Kamal Wash to get 50rs. instant cash back. Kamal wash is the best laundry service provider. 
-                   link https://kamalwash.com/
-        " data-action="share/whatsapp/share">
+       
+       <router-link v-if="logged" to="/wallet">
         <v-carousel-item>
         <v-img class="img" src="@/assets/washing/banner2.jpg"></v-img>
-        
       </v-carousel-item>
-       </a>
+       </router-link>
+
+        <router-link v-if="!logged" to="/login">
+        <v-carousel-item>
+        <v-img class="img" src="@/assets/washing/banner2.jpg"></v-img>
+      </v-carousel-item>
+       </router-link>
+       
     </v-carousel>
 
   
@@ -292,7 +295,7 @@
       this.getProfile()
        this.fetchPlans()
     },
-    computed: mapGetters(['allProducts', 'wallet', 'allPlans']),
+    computed: mapGetters(['allProducts', 'wallet', 'allPlans' , 'logged']),
     methods: {
       ...mapActions(['getProfile' , 'fetchPlans']),
 
