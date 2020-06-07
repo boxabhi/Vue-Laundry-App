@@ -22,6 +22,12 @@
       </v-badge>
 
 
+   <v-avatar size="50" tile>
+          <v-img class="pt-5" src="@/assets/kamal.svg"></v-img>
+        </v-avatar>
+
+      
+
       <v-menu left bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon v-on="on">
