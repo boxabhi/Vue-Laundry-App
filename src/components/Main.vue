@@ -3,17 +3,31 @@
 
     <v-carousel cycle height="150" hide-delimiter-background show-arrows-on-hover>
        
+
       <v-carousel-item>
         <v-img class="img" src="@/assets/washing/banner.jpg"></v-img>
       </v-carousel-item>
+        <a href="whatsapp://send?text=Use My coupon code of Kamal Wash to get 50rs. instant cash back. Kamal wash is the best laundry service provider. 
+                   link https://kamalwash.com/
+        " data-action="share/whatsapp/share">
       <v-carousel-item>
         <v-img class="img" src="@/assets/washing/refer.jpg"></v-img>
       </v-carousel-item>
-      <v-carousel-item>
+        </a>
+
+         
+      
+         <a href="whatsapp://send?text=Use My coupon code of Kamal Wash to get 50rs. instant cash back. Kamal wash is the best laundry service provider. 
+                   link https://kamalwash.com/
+        " data-action="share/whatsapp/share">
+        <v-carousel-item>
         <v-img class="img" src="@/assets/washing/banner2.jpg"></v-img>
+        
       </v-carousel-item>
+       </a>
     </v-carousel>
 
+  
 
 
     <v-container>
@@ -223,7 +237,7 @@
       <v-col cols="12">
         <v-card color="#4485e6" dark>
           <v-card-title>
-            <b>We at Kamal Laundry</b>
+            <b>We at Kamal Wash</b>
           </v-card-title>
 
           <v-card-subtitle color="white" class="text-white ">
@@ -246,7 +260,7 @@
  <v-card height="150">
       <v-footer absolute class="font-weight-medium">
         <v-col class="text-center" cols="12">
-          <strong>Kamal Washers</strong>
+          <strong>Kamal Wash</strong>
         </v-col>
       </v-footer>
     </v-card>

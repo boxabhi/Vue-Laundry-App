@@ -11,54 +11,11 @@
             <div class="container text-center">
 
                 <div class="panel pricing-table">
-                    <h3 class="text-center mb-5 mt-5">Hospital Plan</h3>
-                    <table class="table ">
+                    <h3 class="text-center mb-5 mt-5">School Plan</h3>
+                    
+                    <p> 1. Free shipping </p>
+                    
 
-                        <thead class="mb-4">
-                            <tr class="mb-4">
-                                <th scope="col"><b> Benefits </b></th>
-                                <th scope="col"><b>Present</b></th>
-                            </tr>
-                        </thead>
-
-                        <tbody class="pt-5 mt-5">
-
-                            <tr style="width : 80px !important" class="mt-5">
-                                <th width="" style="max-width:10px" class="text-left">Home Pickup </th>
-                                <td>
-                                    <v-list-item-avatar size="26">
-                                        <v-img src="@/assets/washing/icons/interface.svg"></v-img>
-                                    </v-list-item-avatar>
-                                </td>
-
-                            </tr>
-
-                            <tr style="width : 80px !important" class="mt-5">
-                                <th width="" style="max-width:10px" class="text-left">Home Deliver </th>
-                                <td>
-                                    <v-list-item-avatar size="26">
-                                        <v-img src="@/assets/washing/icons/interface.svg"></v-img>
-                                    </v-list-item-avatar>
-                                </td>
-
-                            </tr>
-
-
-
-                    <tr style="width : 80px !important" class="mt-5">
-                                <th width="" style="max-width:10px" class="text-left">Full electricity repair </th>
-                                <td>
-                                    <v-list-item-avatar size="26">
-                                        <v-img src="@/assets/washing/icons/interface.svg"></v-img>
-                                    </v-list-item-avatar>
-                                </td>
-
-                            </tr>
-
-
-
-                            </tbody>
-                    </table>
                     <div class="text-center mx-auto">
                     <v-btn small class="mt-5" color="success" @click="buy(1)">
                         Buy now

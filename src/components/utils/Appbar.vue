@@ -6,7 +6,7 @@
 
       </v-app-bar-nav-icon>
 
-      <v-toolbar-title>Kamal Services</v-toolbar-title>
+      <v-toolbar-title>Kamal Wash</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
