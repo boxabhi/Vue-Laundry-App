@@ -1,6 +1,6 @@
 <template>
 <div>
-   
+     <Appbar />
     <v-container>
 
  <v-img class="google mx-auto mb-4 mt-4" src="@/assets/washing/offer.svg"></v-img>
@@ -18,10 +18,10 @@
 
 
 <script>
-    
+    import Appbar from '@/components/utils/Appbar.vue'
     export default {
         components: {
-        
+        Appbar
 
         },
         data() {

@@ -53,7 +53,7 @@ import axios from 'axios'
         methods: {
           check(){
 
-            axios.post('http://127.0.0.1:8000/otp',{otp : this.otp},{
+            axios.post('https://kamallaundry.herokuapp.com/otp',{otp : this.otp},{
                  headers: {
                 Authorization: 'Token ' + localStorage.getItem('token')
                 }
@@ -81,7 +81,7 @@ this.$router.push('/')
           },
             resend(){
               console.log("clic")
-              axios.get('http://127.0.0.1:8000/otp',{
+              axios.get('https://kamallaundry.herokuapp.com/otp',{
                  headers: {
                 Authorization: 'Token ' + localStorage.getItem('token')
                 }

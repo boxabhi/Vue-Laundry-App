@@ -11,7 +11,7 @@
             <div class="container text-center">
 
                 <div class="panel pricing-table">
-                    <h3 class="text-center mb-5 mt-5">Studetn Plan</h3>
+                    <h3 class="text-center mb-5 mt-5">Hospital Plan</h3>
                     <table class="table ">
 
                         <thead class="mb-4">
@@ -44,10 +44,27 @@
                             </tr>
 
 
-                            <v-btn class="error" dark>Buy</v-btn>
-                            <button id="razor" @click="razor()" ref="razor" refs="razor">Pay</button>
-                        </tbody>
+
+                    <tr style="width : 80px !important" class="mt-5">
+                                <th width="" style="max-width:10px" class="text-left">Full electricity repair </th>
+                                <td>
+                                    <v-list-item-avatar size="26">
+                                        <v-img src="@/assets/washing/icons/interface.svg"></v-img>
+                                    </v-list-item-avatar>
+                                </td>
+
+                            </tr>
+
+
+
+                            </tbody>
                     </table>
+                    <div class="text-center mx-auto">
+                    <v-btn small class="mt-5" color="success" @click="buy(1)">
+                        Buy now
+                    </v-btn>
+
+</div>
                 </div>
 
             </div>
@@ -91,6 +108,31 @@
             async razor() {
                 let rzp = new window.Razorpay(this.options);
                 rzp.open();
+
+            },
+            buy() {
+                var options = {
+                    "key_id": "rzp_test_dqCdqfA4kpY2ei",
+                    "key": "rzp_test_dqCdqfA4kpY2ei",
+                    "currency": "INR",
+                    "amount": 49900,
+                    "name": "Kamal Washers",
+                    "description": "Buy MemberShip ",
+                    "key_secret": "RE3Jlzenl4cfYhfdkKcOkey6",
+                    "handler": function (response) {
+                        this.res = response
+                    }
+                }
+
+                let rzp = new window.Razorpay(options);
+                rzp.open();
+
+                this.verifySignature();
+
+            },
+
+            verifySignature: function () {
+                console.log(this.response)
 
             }
         }

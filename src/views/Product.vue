@@ -83,7 +83,7 @@ export default {
        async product(){
             var slug = this.$route.params.slug
             
-         const result =await axios.get(`http://127.0.0.1:8000/api/product/${slug}`)
+         const result =await axios.get(`https://kamallaundry.herokuapp.com/api/product/${slug}`)
         this.item  = result.data
          console.log(result.data)
 

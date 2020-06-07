@@ -13,8 +13,7 @@ const getters  ={
 
 const actions = {
     async fetchPlans({commit}){
-        const response = await axios.get('http://127.0.0.1:8000/plans');
-        
+        const response = await axios.get('https://kamallaundry.herokuapp.com/plans');
         commit('setPlans',response.data.data)
     },
 

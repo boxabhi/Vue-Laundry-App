@@ -2,44 +2,38 @@
     <div>
         <Appbar />
         <h2 class="text-center mt-5 mb-4 text-uppercase">Buy our membership</h2>
-        <v-container>
-          
-            <v-card class="mx-auto mt-4" v-for="plans in allPlans" :key="plans.id" max-width="400" height="200"
-                outlined>
-                <v-list-item three-line>
-                    <v-list-item-content>
-                        <div class="overline mb-4">Membership</div>
-                        <v-list-item-title class=" mb-1">{{plans.name}}</v-list-item-title>
-                        <v-list-item-subtitle>{{plans.description}}.</v-list-item-subtitle>
 
 
-                    </v-list-item-content>
-                    <v-list-item-avatar tile size="80">
-                        <v-img src="@/assets/washing/icons/membership/fashion.svg"></v-img>
-                    </v-list-item-avatar>
-                </v-list-item>
 
-                <v-card-actions>
+        <div class="text-center mt-5 pt-5 mx-auto">
+            <v-img class="login-img text-center mx-auto" src="@/assets/washing/new/plans.svg"></v-img>
+            <h3 class="text--disabled">No Plan found</h3>
+        </div>
 
-                    <v-btn small color="success" @click="buy(plans.id)">
-                        Buy now
-                    </v-btn>
-                    
-                        <v-btn color="orange" dark small>
-                            &#8377; {{plans.price}}
-                            <v-icon>mdi-star</v-icon>
-                        </v-btn>
-                   
-                </v-card-actions>
+        <!-- <v-container>
+            <v-card class="p-4" elevation="2">
+            <v-list-item three-line >
+                <v-list-item-content>
+                    <div class="overline mb-4">Current Plan</div>
+                    <v-list-item-title class="headline mb-1">Student</v-list-item-title>
+                        </v-list-item-content>
+
+                <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar>
+            </v-list-item>
+
+            <v-card-actions>
+                <v-btn tile class="warning">Check Details</v-btn>
+            </v-card-actions>
             </v-card>
-            <div class="mb-5 pb-5"></div>
-        </v-container>
+        </v-container> -->
+
+
     </div>
 </template>
 
 <script>
     import Appbar from '../components/utils/Appbar'
-  //  import axios from 'axios'
+    //  import axios from 'axios'
     import {
         mapGetters,
         mapActions
@@ -49,44 +43,43 @@
             Appbar
         },
         created() {
-            this.fetchPlans()
+
         },
         data() {
             return {
-                res : {},
-               
+                res: {},
+
             }
         },
-        
+
 
         computed: mapGetters(['allPlans']),
         methods: {
             ...mapActions(['fetchPlans']),
-
-            buy(){
-               var  options= {
+            buy() {
+                var options = {
                     "key_id": "rzp_test_dqCdqfA4kpY2ei",
                     "key": "rzp_test_dqCdqfA4kpY2ei",
                     "currency": "INR",
-                    "amount" : 49900,
+                    "amount": 49900,
                     "name": "Kamal Washers",
                     "description": "Buy MemberShip ",
                     "key_secret": "RE3Jlzenl4cfYhfdkKcOkey6",
-                    "handler": function (response){
+                    "handler": function (response) {
                         this.res = response
-                     }
-               }
+                    }
+                }
 
-               let rzp = new window.Razorpay(options);
+                let rzp = new window.Razorpay(options);
                 rzp.open();
-                
+
                 this.verifySignature();
-               
+
             },
 
-            verifySignature : function(){
+            verifySignature: function () {
                 console.log(this.response)
-            
+
             }
         }
     }

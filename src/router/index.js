@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Cart from '../views/Cart.vue'
 import Product from '../views/Product.vue'
+import Jobs from '../views/Jobs.vue'
+
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Offer from '../views/Offer.vue'
@@ -11,7 +13,11 @@ import Membership from '../views/Membership.vue'
 import Signup from '../views/temporary/Signup.vue'
 import About_offer from '../views/About_offer.vue'
 import Items from '../views/Items.vue'
+import Information from '../views/Information.vue'
 import Signin from '../views/temporary/Signin.vue'
+import Profile from '../views/User/Profile.vue'
+import Wallet from '../views/User/Wallet.vue'
+import Orders from '../views/User/Orders.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -19,6 +25,12 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
+  },
+  
+  {
+    path: '/jobs',
+    name: 'Jobs',
+    component: Jobs
   },
   {
     path: '/signin',
@@ -39,6 +51,11 @@ Vue.use(VueRouter)
     path : '/cart',
     name : 'Cart',
     component: Cart
+  },
+  {
+    path : '/info/:service',
+    name : 'Information',
+    component: Information
   },
   {
     path : '/membership',
@@ -75,6 +92,31 @@ Vue.use(VueRouter)
     name : Items,
     component: Items
   },
+
+  {
+    path : '/profile',
+    name : Profile,
+    component: Profile
+  },
+
+  {
+    path : '/wallet',
+    name : Wallet,
+    component: Wallet
+  },
+
+  {
+    path : '/orders',
+    name : Orders,
+    component: Orders
+  },
+
+  {
+    path: '/*',
+    component: 404
+    },
+ 
+
   {
     path: '/about',
     name: 'About',

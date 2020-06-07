@@ -21,7 +21,7 @@
 
                     </v-list-item-content>
                     <v-list-item-avatar tile size="40" class="mt-4">
-                        <v-img :src="`http://127.0.0.1:8000${plans.product.image}`"></v-img>
+                        <v-img :src="`https://kamallaundry.herokuapp.com${plans.product.image}`"></v-img>
                     </v-list-item-avatar>
                      
                 </v-list-item>
@@ -38,11 +38,11 @@
                    
                 </v-card-actions>
             </v-card>
-
-    <v-btn rounded v-if="!noitems" @click="buy()" block color="primary" class="mt-4" dark tile >
+<div class="mb-5 pb-5"></div>
+    <v-btn rounded v-if="!noitems" @click="buy()" block color="primary" class="mt-4 mb-4" dark tile >
          Proceed to Checkout ₹ {{ items.total}}</v-btn>
 
-
+<div class="mb-5 pb-5"></div>
             <div class="mb-5 pb-5"></div>
         </v-container>
 
@@ -67,7 +67,7 @@ export default {
     },
     methods: {
         getItems(){
-            axios.get('http://127.0.0.1:8000/cart',{
+            axios.get('https://kamallaundry.herokuapp.com/cart',{
                 headers: {
                Authorization: 'Token ' + localStorage.getItem('token')
                }

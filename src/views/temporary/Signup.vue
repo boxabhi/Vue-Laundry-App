@@ -57,7 +57,7 @@
                     'password' : this.password
                 }
     console.log(data)
-                axios.post('http://127.0.0.1:8000/register',data)
+                axios.post('https://kamallaundry.herokuapp.com/register',data)
                 .then(res => {
                     this.$router.push('/otp')
                     console.log(res.data)

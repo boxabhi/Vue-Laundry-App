@@ -16,7 +16,7 @@ const getters  ={
 
 const actions = {
     async addCart({commit}){
-        axios.get('http://127.0.0.1:8000/cart',{
+        axios.get('https://kamallaundry.herokuapp.com/cart',{
                 headers: {
                Authorization: 'Token ' + localStorage.getItem('token')
                }
@@ -27,7 +27,7 @@ const actions = {
         
     },
     async allCarts({commit}){
-        axios.get('http://127.0.0.1:8000/cart',{
+        axios.get('https://kamallaundry.herokuapp.com/cart',{
             headers: {
            Authorization: 'Token ' + localStorage.getItem('token')
            }
@@ -43,20 +43,21 @@ const actions = {
 
 const mutations ={
         setCart(state,items){
-            axios.post('http://127.0.0.1:8000/cart', {product : items},{
+            axios.post('https://kamallaundry.herokuapp.com/cart', {product : items},{
                 headers: {
                Authorization: 'Token ' + localStorage.getItem('token')
                }
              })
              .then(response =>{
                console.log(response)
-             })
+               state.cart.push(items)
+             }).catch(err => console.log(err))
            
 
-            state.cart.push(items)
+            
         },   
         removeCart(state, items){
-            axios.delete('http://127.0.0.1:8000/cart', {
+            axios.delete('https://kamallaundry.herokuapp.com/cart', {
                 data : {product : items},
                 headers: {
                Authorization: 'Token ' + localStorage.getItem('token')

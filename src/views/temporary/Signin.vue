@@ -52,10 +52,10 @@
                 }
     console.log(data)
    
-                axios.post('http://127.0.0.1:8000/token',data)
+                axios.post('https://kamallaundry.herokuapp.com/token',data)
                 .then(res => {
                     this.$router.push('/')
-                
+                this.$router.go(0);
                     localStorage.setItem('token' , res.data.token)
                 }).catch(err => {
                     if(err.response.status){
