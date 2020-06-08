@@ -4,9 +4,7 @@
 
 
 
-        <div class="background">
-
-
+      
 
             <div class="container text-center">
 
@@ -26,7 +24,7 @@
 
             </div>
         </div>
-    </div>
+    
 </template>
 
 

@@ -22,7 +22,7 @@
       </v-badge>
 
 
-   <v-avatar size="50" >
+   <v-avatar size="50" tile >
           <v-img class="pt-5" src="@/assets/kamal.jpeg"></v-img>
         </v-avatar>
 
