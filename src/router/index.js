@@ -15,6 +15,8 @@ import About_offer from '../views/About_offer.vue'
 import Items from '../views/Items.vue'
 import Information from '../views/Information.vue'
 import Signin from '../views/temporary/Signin.vue'
+import Forget from '../views/temporary/Forget.vue'
+import Forget_otp from '../views/temporary/Forget_otp.vue'
 import Profile from '../views/User/Profile.vue'
 import Wallet from '../views/User/Wallet.vue'
 import Orders from '../views/User/Orders.vue'
@@ -112,16 +114,26 @@ Vue.use(VueRouter)
   },
 
   {
-    path: '/*',
-    component: 404
-    },
- 
+    path: '/forget',
+    name : Forget,
+    component: Forget,
+  },
 
+  {
+    path: '/forget-otp',
+    name : Forget_otp,
+    component: Forget_otp,
+  },
+ 
   {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  },
+  // {
+  //   path: '/*',
+  //   component: 404
+  //   },
 ]
 
 const router = new VueRouter({

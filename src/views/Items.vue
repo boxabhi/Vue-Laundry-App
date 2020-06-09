@@ -34,7 +34,7 @@
     <v-btn class="ma-2" outlined  fab x-small color="indigo">
       <v-icon @click="remove(plans.id,plans.product)">mdi-minus</v-icon>
     </v-btn>
-    {{plans.quantity}}  x  {{plans.product.price}}
+    {{plans.quantity}}  x  {{plans.product.price}} = {{ plans.quantity * plans.product.price}}
                    
                 </v-card-actions>
             </v-card>

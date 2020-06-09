@@ -16,6 +16,9 @@
         <v-text-field v-model="email" prepend-icon="mdi-account-box-outline" type="email" label="Enter email"></v-text-field>
         <v-text-field v-model="password" prepend-icon="mdi-account-key" type="password" label="Enter password"></v-text-field>
         <p v-show="submitted && !password" type="error" class="text-red">Password is required</p>
+        
+       <router-link to="/forget"> <p>Foget Password?</p></router-link>
+
         <v-btn type="submit" block color="secondary" dark>Login</v-btn>
 
  </form>

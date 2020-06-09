@@ -15,9 +15,9 @@
       </v-btn>
 
 
-      <v-badge color="green" :content="total" v-if="total">
-        <router-link to="/items">
-          <v-icon>mdi-cart</v-icon>
+      <v-badge color="green" :content="total" v-if="total" class="mr-5 ">
+        <router-link to="/items"  >
+          <v-icon >mdi-cart</v-icon>
         </router-link>
       </v-badge>
 

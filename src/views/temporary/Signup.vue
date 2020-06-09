@@ -10,13 +10,14 @@
  <form @submit.prevent="handleSubmit">
      <div class="text-center">
    <v-alert type="error"  v-model="submitted">
-      Fill all the fields
+      {{message}}
     </v-alert>
      </div>
         <v-text-field v-model="name" prepend-icon="mdi-account-circle" type="text" label="Enter name"></v-text-field>
         <v-text-field v-model="email" prepend-icon="mdi-account-box-outline" type="email" label="Enter email"></v-text-field>
         <v-text-field v-model="mobile" prepend-icon="mdi-whatsapp" type="number" label="Enter mobile"></v-text-field>
         <v-text-field v-model="password" prepend-icon="mdi-account-key" type="password" label="Enter password"></v-text-field>
+        <v-text-field v-model="wallet" prepend-icon="mdi-credit-card-plus" type="text" label="Share Code"></v-text-field>
         <p v-show="submitted && !password" type="error" class="text-red">Password is required</p>
         <v-btn type="submit" block color="secondary" dark>Sign Up</v-btn>
 
@@ -39,7 +40,9 @@
                 mobile : '',
                 email : '',
                 password : '',
+                wallet : '',
                 submitted : false,
+                message : ''
             }
         },
         methods: {
@@ -54,18 +57,30 @@
                     'name' : this.name,
                     'email' : this.email,
                     'mobile' : this.mobile,
-                    'password' : this.password
+                    'password' : this.password,
+                    'code' : this.wallet
                 }
     console.log(data)
                 axios.post('https://kamallaundry.herokuapp.com/register',data)
                 .then(res => {
+
+                    if(res.data.status == false){
+                        this.submitted = true
+                        this.message = "Invalid code"
+                         setTimeout(() =>{
+                    this.submitted = false
+                    },2000)
+                    }else{
+
                     this.$router.push('/otp')
                     console.log(res.data)
                     localStorage.setItem('token' , res.data.token)
+                    }
                 })
 
                 }else{
                     this.submitted = true
+                    this.message = "Fill all the fields"
                     setTimeout(() =>{
                     this.submitted = false
                     },2000)
