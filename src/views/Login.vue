@@ -11,6 +11,8 @@
       <v-card elevation="5" class="p-5">
          <v-container v-if="loggedIn" class="mt-5 pt-5"> 
         <v-btn  block color="primary" dark @click="logout()"  >Logout</v-btn>
+
+        <router-link to="/forget">  <v-btn  block color="success" class="mt-3" outline dark >Change Password</v-btn></router-link>
         </v-container>
 
         <v-container v-if="!loggedIn">
