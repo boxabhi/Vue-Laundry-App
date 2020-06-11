@@ -16,17 +16,17 @@
 
 
       <v-badge color="green" :content="total" v-if="total" class="mr-5 ">
-        <router-link to="/items"  >
-          <v-icon >mdi-cart</v-icon>
+        <router-link to="/items">
+          <v-icon>mdi-cart</v-icon>
         </router-link>
       </v-badge>
 
 
-   <v-avatar size="50" tile >
-          <v-img class="pt-5" src="@/assets/kamal.jpeg"></v-img>
-        </v-avatar>
+      <v-avatar size="50" tile>
+        <v-img class="pt-5" src="@/assets/kamal.jpeg"></v-img>
+      </v-avatar>
 
-      
+
 
       <v-menu left bottom>
         <template v-slot:activator="{ on }">
@@ -87,13 +87,36 @@
 
           <div class="mt-3">
 
-        <a href="whatsapp://send?text=Use My coupon code of Kamal Wash to get 50rs. instant cash back. Kamal wash is the best laundry service provider. 
-                   link https://kamalwash.com/
-        " data-action="share/whatsapp/share">
-            <v-btn block tile outlined color="white">
-              <v-icon>mdi-share</v-icon> Share
-            </v-btn>
-            </a>
+         
+              <v-btn block tile outlined color="white" @click.stop="dialog = true">
+                <v-icon>mdi-share</v-icon> Share
+              </v-btn>
+          
+
+            <v-dialog v-model="dialog" max-width="290">
+              <v-card>
+                <v-card-title >Share on</v-card-title>
+    <v-container class="mx-auto text-center pb-5">
+    <a :href="whatsapp" data-action="share/whatsapp/share" class="ml-5">
+                 <v-avatar size="50">
+                <v-icon class="success" dark>mdi-whatsapp</v-icon> 
+            </v-avatar>
+                </a>
+
+                <a href="https://www.facebook.com/sharer.php?u=https://kamalwash.com/" class="ml-5">
+                <v-avatar size="50">
+                <v-icon class="primary" tile dark>mdi-facebook</v-icon> 
+            </v-avatar>
+                </a>
+
+                
+                  </v-container>
+                
+              </v-card>
+            </v-dialog>
+
+
+
 
           </div>
 
@@ -111,7 +134,7 @@
           </div>
 
 
-        <v-btn block class="mt-5" @click="logout()">Logout</v-btn>
+          <v-btn block class="mt-5" @click="logout()">Logout</v-btn>
           <v-container class="text-center">
             <v-icon dark class="pr-1 mr-1">mdi-facebook</v-icon>
             <v-icon dark class="pr-1 mr-1">mdi-whatsapp</v-icon>
@@ -127,13 +150,15 @@
       </div>
 
 
-    <v-container class="mt-5 pt-5" v-show="!logged">
-     <router-link to="/login"> <v-btn block class="mt-5">Login</v-btn></router-link>
-       <div class="text-center mt-5 t-5">
-            <v-icon dark @click="drawer = !drawer">mdi-window-close</v-icon>
-          </div>
-    </v-container>
-     
+      <v-container class="mt-5 pt-5" v-show="!logged">
+        <router-link to="/login">
+          <v-btn block class="mt-5">Login</v-btn>
+        </router-link>
+        <div class="text-center mt-5 t-5">
+          <v-icon dark @click="drawer = !drawer">mdi-window-close</v-icon>
+        </div>
+      </v-container>
+
 
     </v-navigation-drawer>
   </nav>
@@ -146,24 +171,26 @@
     mapGetters,
     mapActions
   } from 'vuex';
- 
+
   export default {
     components: {
       Drawer
     },
-    computed: mapGetters(['total', 'name', 'logged']),
+    computed: mapGetters(['total', 'name', 'logged', 'code']),
 
     data: () => ({
       drawer: false,
       item: 1,
-      
+
       username: '',
       loggedIn: false,
+      whatsapp: '',
+      dialog: false
 
     }),
 
     methods: {
-       ...mapActions(['getProfile']),
+      ...mapActions(['getProfile']),
       logout() {
         this.$router.go(0);
         localStorage.removeItem('token');
@@ -186,16 +213,26 @@
           this.loggedIn = true
         }
         console.log(this.loggedIn)
+      },
+      setWhatsapp() {
+        var str = `whatsapp://send?text= Use my coupon code '${this.code}' of Kamal Wash to get 50rs. Instant cash back. 
+        Kamal wash is the best laundry service provider
+        Apply the above code to get 50rs in your wallet.
+        link https://kamalwash.com/
+        My code '${this.code}'`
+        console.log(str)
+        this.whatsapp = str
       }
     },
     created() {
       this.check()
       this.checkToken()
-       this.getProfile()
+      this.getProfile()
+      this.setWhatsapp();
     },
 
     watch: {
-      logged : function(){
+      logged: function () {
 
       }
     }

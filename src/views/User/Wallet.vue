@@ -17,16 +17,36 @@
             </div>
           
     <div class="text-center mt-5">
-        <a href="whatsapp://send?text=Use My coupon code of Kamal Wash to get 50rs. instant cash back. Kamal wash is the best laundry service provider. 
-          link https://kamalwash.com/
-        " data-action="share/whatsapp/share">
-        <v-btn  tile  color="success" class="p-5">
+       
+        <v-btn  tile  color="success" class="p-5" @click.stop="dialog = true">
   
    <v-icon>mdi-share</v-icon> Share
    </v-btn>
-        </a>
+      
     </div>
 
+
+            <v-dialog v-model="dialog" max-width="290">
+              <v-card>
+                <v-card-title >Share on</v-card-title>
+    <v-container class="mx-auto text-center pb-5">
+    <a :href="whatsapp" data-action="share/whatsapp/share" class="ml-5">
+                 <v-avatar size="50">
+                <v-icon class="success" dark>mdi-whatsapp</v-icon> 
+            </v-avatar>
+                </a>
+
+                <a href="https://www.facebook.com/sharer.php?u=https://kamalwash.com/" class="ml-5">
+                <v-avatar size="50">
+                <v-icon class="primary" tile dark>mdi-facebook</v-icon> 
+            </v-avatar>
+                </a>
+
+                
+                  </v-container>
+                
+              </v-card>
+            </v-dialog>
 
         </v-container>
     </div>
@@ -39,13 +59,29 @@
     mapActions
   } from 'vuex';
 export default {
+  data() {
+    return {
+       whatsapp: '',
+      dialog: false
+    }
+  },
     components: {Appbar},
     computed: mapGetters([ 'wallet', 'code' ]),
     created() {
         this.getProfile()
+         this.setWhatsapp();
     },
     methods: {
        ...mapActions(['getProfile']),
+        setWhatsapp() {
+        var str = `whatsapp://send?text= Use my coupon code '${this.code}' of Kamal Wash to get 50rs. Instant cash back. 
+        Kamal wash is the best laundry service provider
+        Apply the above code to get 50rs in your wallet.
+        link https://kamalwash.com/
+        My code '${this.code}'`
+        console.log(str)
+        this.whatsapp = str
+      }
     },
 }
 </script>
