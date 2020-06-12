@@ -10,7 +10,7 @@ const getters  ={
         return state.cart;
     },
     total : function() {   
-        return state.cart.length
+        return state.total
     }
 }
 
@@ -22,7 +22,10 @@ const actions = {
                }
              })
              .then(response =>{
+               console.log(response)
                 commit('setCart',  response.data)
+                commit('setTotal' , response.data.cart_size)
+               
         })
         
     },
@@ -34,6 +37,7 @@ const actions = {
          })
          .then(response =>{
             commit('setCart',  response.data.result);
+            commit('setTotal' , response.data.cart_size)
     })
 
     }
@@ -42,6 +46,7 @@ const actions = {
 
 
 const mutations ={
+  setTotal :(state,total) =>(state.total = total),     
         setCart(state,items){
             axios.post('https://kamallaundry.herokuapp.com/cart', {product : items},{
                 headers: {
@@ -64,12 +69,13 @@ const mutations ={
                }
              })
              .then(response =>{
-               console.log(response)
+               
+this.setTotal(state , response.data.cart_size)
+          
                
              })
+        }  ,
 
-           
-        }  
 }
 
 export default{
