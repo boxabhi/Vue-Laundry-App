@@ -11,7 +11,7 @@
         </div>
 
         <v-container>
-            <v-card class="p-4" elevation="2" v-if="plans.length > 0" >
+            <v-card class="p-4" elevation="2" v-if="plans" >
             <v-list-item three-line >
                 <v-list-item-content>
                     <div class="overline mb-4">Current Plan</div>
