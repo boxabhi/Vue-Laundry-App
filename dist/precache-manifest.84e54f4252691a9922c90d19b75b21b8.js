@@ -4,8 +4,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/_redirects"
   },
   {
-    "revision": "55a2021f32ba47af47cd",
-    "url": "/css/app.3d163369.css"
+    "revision": "ace98e5f160ec13d5e16",
+    "url": "/css/app.a12ce445.css"
   },
   {
     "revision": "182175a07c4dc72330c8",
@@ -60,12 +60,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/empty.529fd7db.svg"
   },
   {
+    "revision": "88182a3bab6382545761d383c19c80f5",
+    "url": "/img/family.88182a3b.svg"
+  },
+  {
     "revision": "e30939f106be2b5a49f435c384168189",
     "url": "/img/garment.e30939f1.svg"
   },
   {
     "revision": "51b1e028ef79574604df14c198181a0c",
     "url": "/img/home-delivery.51b1e028.svg"
+  },
+  {
+    "revision": "1c921b9b44320ed76ced01125b632e3e",
+    "url": "/img/hospital.1c921b9b.svg"
+  },
+  {
+    "revision": "f46a3971e027e848aa39feac4728c9e8",
+    "url": "/img/hotel.f46a3971.svg"
   },
   {
     "revision": "d4ee1c2d398a7338ad4aecd2492776aa",
@@ -128,6 +140,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/shorts.1f6d262a.svg"
   },
   {
+    "revision": "3862c0ee275adab19c89d34a60e616d8",
+    "url": "/img/student.3862c0ee.svg"
+  },
+  {
     "revision": "4a00f5798062f817492e27568a4a8daa",
     "url": "/img/t-shirt.4a00f579.svg"
   },
@@ -176,7 +192,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/wrench.5f9b3f05.svg"
   },
   {
-    "revision": "5f51d9b89f393a7f4b8f41a3ed095f9e",
+    "revision": "56112624e75a324ad3d5cc8cb7db6770",
     "url": "/index.html"
   },
   {
@@ -184,8 +200,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/js/about.d80716bb.js"
   },
   {
-    "revision": "55a2021f32ba47af47cd",
-    "url": "/js/app.eef5dca2.js"
+    "revision": "ace98e5f160ec13d5e16",
+    "url": "/js/app.4156e149.js"
   },
   {
     "revision": "182175a07c4dc72330c8",

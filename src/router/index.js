@@ -20,9 +20,17 @@ import Forget_otp from '../views/temporary/Forget_otp.vue'
 import Profile from '../views/User/Profile.vue'
 import Wallet from '../views/User/Wallet.vue'
 import Orders from '../views/User/Orders.vue'
+
+import Images from '../views/Images.vue'
+
 Vue.use(VueRouter)
 
   const routes = [
+    {
+      path: '/images',
+      name: 'Images',
+      component: Images
+    },
   {
     path: '/',
     name: 'Home',

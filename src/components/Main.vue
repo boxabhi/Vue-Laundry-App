@@ -43,7 +43,7 @@
                 <v-col cols="4" class="p-4" v-for="plans in allPlans" :key="plans.id" >
                     <router-link to="offer-detail/22">
                     <v-avatar size="60" tile>
-                    <v-img  :src="getImage(plans.image)"></v-img>
+                    <v-img  :src="plans.image"></v-img>
                     </v-avatar>
                     <p class="overline mt-2 font-weight-bold">{{plans.name}}</p>
                     </router-link>
