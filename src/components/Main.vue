@@ -41,7 +41,8 @@
             <v-row class="m-5 mx-auto pt-5 pl-5 pr-5">
 
                 <v-col cols="4" class="p-4" v-for="plans in allPlans" :key="plans.id" >
-                    <router-link to="offer-detail/22">
+                    <router-link :to="{path : `/offer-detail/${plans.id}` ,
+                     query: { price : plans.price , description: plans.description}}" >
                     <v-avatar size="60" tile>
                     <v-img  :src="plans.image"></v-img>
                     </v-avatar>

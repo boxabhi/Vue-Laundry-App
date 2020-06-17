@@ -93,9 +93,10 @@ Vue.use(VueRouter)
     component: Otp
   },
   {
-    path : '/offer-detail/:slug',
+    path : '/offer-detail/:id',
     name : About_offer,
-    component: About_offer
+    component: About_offer,
+    props: true
   },
   {
     path : '/items',
