@@ -45,8 +45,6 @@
                         type="number" label="Alternate mobile">
                     </v-text-field>
 
-                    <v-text-field v-model="wallet" prepend-icon="mdi-credit-card-plus" type="text" label="Share Code">
-                    </v-text-field>
                     <v-btn type="submit" tile block color="success" dark>Update</v-btn>
 
                 </form>
