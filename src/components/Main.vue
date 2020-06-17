@@ -298,7 +298,7 @@
     },
     computed: mapGetters(['allProducts', 'wallet', 'allPlans' , 'logged']),
     methods: {
-      ...mapActions(['getProfile' , 'fetchPlans']),
+      ...mapActions(['getProfile' , 'fetchPlans' ]),
 
       getImage(image){
         var str = `/assets/plan/${image}`

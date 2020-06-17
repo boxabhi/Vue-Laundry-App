@@ -11,7 +11,7 @@
         </div>
 
         <v-container>
-            <v-card class="p-4" elevation="2" v-show="found">
+            <v-card class="p-4" elevation="2" v-if="plans.length > 0" >
             <v-list-item three-line >
                 <v-list-item-content>
                     <div class="overline mb-4">Current Plan</div>
@@ -99,6 +99,7 @@ this.getActivePlans()
             },
 
             getActivePlans(){
+                if(localStorage.getItem('token')){
  axios.get('https://kamallaundry.herokuapp.com/userplan',{
             headers: {
            Authorization: 'Token ' + localStorage.getItem('token')
@@ -110,9 +111,10 @@ this.getActivePlans()
                  this.found  = true
                   this.plans = response.data.result
              }
-            
+         
           
     })
+                }
 
             },
              getDate(date){
