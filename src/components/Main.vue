@@ -296,9 +296,9 @@
       this.getProfile()
        this.fetchPlans()
     },
-    computed: mapGetters(['allProducts', 'wallet', 'allPlans' , 'logged']),
+    computed: mapGetters(['allProducts', 'wallet', 'allPlans' , 'logged', 'total', 'carts']),
     methods: {
-      ...mapActions(['getProfile' , 'fetchPlans' ]),
+      ...mapActions(['getProfile' , 'fetchPlans', 'allCarts' ]),
 
       getImage(image){
         var str = `/assets/plan/${image}`
