@@ -47,12 +47,12 @@
         },
         methods: {
             handleSubmit(e){
-                console.log("submit")
+              
                 e.preventDefault()
                 
 
                 if(this.name != '' && this.password != '' && this.email != '' && this.mobile != ''){
-                    console.log('Form submitted lets see!')
+                 
                var data = {
                     'name' : this.name,
                     'email' : this.email,
@@ -60,7 +60,7 @@
                     'password' : this.password,
                     'code' : this.wallet
                 }
-    console.log(data)
+ 
                 axios.post('https://kamallaundry.herokuapp.com/register',data)
                 .then(res => {
 

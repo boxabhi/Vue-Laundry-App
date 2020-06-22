@@ -46,14 +46,13 @@
             handleSubmit(e){
                 e.preventDefault()
                 if(this.password != '' && this.email != '' ){
-                    console.log('Form submitted lets see!')
+                  
                var data = {
                    
                     'username' : this.email,
                 
                     'password' : this.password
                 }
-    console.log(data)
    
                 axios.post('https://kamallaundry.herokuapp.com/token',data)
                 .then(res => {
@@ -67,7 +66,7 @@
                     this.submitted = false
                     },2000)
                     }
-                    console.log(err.response.status)
+                
                 })
 
                 }else{

@@ -60,7 +60,7 @@
                 const headers = {
                     'Authorization': 'Token ' + localStorage.getItem('user')
                 }
-                console.log(headers)
+           
                 const res = await axios.post('http://127.0.0.1:8000/api/cart', data, {
                     headers: headers,
 

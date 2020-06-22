@@ -85,7 +85,7 @@ export default {
             
          const result =await axios.get(`https://kamallaundry.herokuapp.com/api/product/${slug}`)
         this.item  = result.data
-         console.log(result.data)
+       
 
         }
     },

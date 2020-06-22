@@ -42,6 +42,10 @@
     <v-btn rounded v-if="!noitems" @click="buy()" block color="primary" class="mt-4 mb-4" dark tile >
          Proceed to Checkout ₹ {{ items.total}}</v-btn>
 
+
+         <v-btn rounded v-if="!noitems" @click="removeall()" block color="error" class="mt-4 mb-4" dark tile >
+         Remove all </v-btn>
+
 <div class="mb-5 pb-5"></div>
             <div class="mb-5 pb-5"></div>
         </v-container>
@@ -66,6 +70,17 @@ export default {
         }
     },
     methods: {
+        removeall(){
+            axios.delete('https://kamallaundry.herokuapp.com/remove',{
+                headers: {
+               Authorization: 'Token ' + localStorage.getItem('token')
+                }
+             }).then(res =>{
+               console.log(res)
+             })
+             this.$forceUpdate()
+             this.$router.push('/')
+        },
         getItems(){
             axios.get('https://kamallaundry.herokuapp.com/cart',{
                 headers: {
@@ -73,7 +88,7 @@ export default {
                }
              })
              .then(response =>{
-               console.log(response.data.result)
+            
                this.items = response.data
                this.total = response.data.total
                if(response.data.result.length == 0){
@@ -84,7 +99,7 @@ export default {
          added(id, product) {
         this.snackbar = true
        this.$store.commit('setCart' , product.id)
-        console.log(this.carts)
+      
         this.text = product + ' Added to Cart'
         this.getItems()
         setTimeout(() => {
@@ -102,7 +117,7 @@ export default {
         } , 500)
       },
        buy(){
-           console.log(this.total)
+          
                var  options= {
                     "key_id": "rzp_test_dqCdqfA4kpY2ei",
                     "key": "rzp_test_dqCdqfA4kpY2ei",
@@ -121,6 +136,7 @@ export default {
             
                
             },
+            
     },
     mounted(){
         this.getItems()

@@ -85,8 +85,7 @@
             },
 
             verifySignature: function () {
-                console.log(this.response)
-
+              
             }
         }
     }

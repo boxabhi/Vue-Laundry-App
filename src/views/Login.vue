@@ -53,13 +53,13 @@
           this.loggedIn = false
       },
         checkToken(){
-          console.log("Calling checkToken")
+      
           var token = localStorage.getItem("token")
-          console.log(token)
+        
           if(token != null){
               this.loggedIn = true
           }
-          console.log(this.loggedIn)
+        
         }
     },
     created(){

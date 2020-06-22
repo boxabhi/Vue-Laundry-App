@@ -89,10 +89,11 @@
       ...mapActions(['fetchProducts', 'allCarts']),
 
       added(id, product) {
+        this.$router.push('/cart')
         this.snackbar = true
-        console.log(id , product)
+     
         this.$store.commit('setCart' , id)
-        console.log(this.carts)
+    
         this.text = product + ' Added to Cart'
         setTimeout(() => {
           this.snackbar = false

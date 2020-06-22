@@ -56,7 +56,7 @@
           axios.post('http://127.0.0.1:8000/forget' , {'phone' : this.phone})
           .then(res => {
             if (res.data.status == false){
-                console.log(res.data)
+               
                 this.submitted = true
                 this.message = "Your aren' t resgistered with us"
                  setTimeout(() =>{
@@ -64,7 +64,7 @@
                     },2000)
                     
             }else{
-                console.log(res.data)
+              
                localStorage.setItem('ftoken' , res.data.token)
                this.$router.push('/forget-otp')
             }

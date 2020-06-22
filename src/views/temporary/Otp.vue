@@ -59,8 +59,7 @@ import axios from 'axios'
                 }
               })
               .then(response =>{
-                console.log(response.data)
-
+           
                 if(response.data.status == true){
                   this.success = true
                   setTimeout(()=>{
@@ -80,7 +79,7 @@ this.$router.push('/')
 
           },
             resend(){
-              console.log("clic")
+            
               axios.get('https://kamallaundry.herokuapp.com/otp',{
                  headers: {
                 Authorization: 'Token ' + localStorage.getItem('token')

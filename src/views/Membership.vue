@@ -94,7 +94,7 @@ this.getActivePlans()
             },
 
             verifySignature: function () {
-                console.log(this.response)
+              
 
             },
 
@@ -106,7 +106,7 @@ this.getActivePlans()
            }
          })
          .then(response =>{
-             console.log(response)
+          
              if(response.data.status == true){
                  this.found  = true
                   this.plans = response.data.result
