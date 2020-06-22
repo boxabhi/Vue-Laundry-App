@@ -46,16 +46,23 @@ const actions = {
 
 
 const mutations ={
-  setTotal :(state,total) =>(state.total = total),     
-        setCart(state,items){
+  setTotal :(state,total) =>(state.total = total),
+  setZero : (state ) =>(state.total = 0),     
+  setCart(state,items){
             axios.post('https://kamallaundry.herokuapp.com/cart', {product : items},{
                 headers: {
                Authorization: 'Token ' + localStorage.getItem('token')
                }
              })
              .then(response =>{
+               console.log("i")
                console.log(response)
+            
                state.cart.push(items)
+
+               state.total = ((Object.entries(response.data.result)).length)
+               
+
              }).catch(err => console.log(err))
            
 
@@ -69,10 +76,12 @@ const mutations ={
                }
              })
              .then(response =>{
+               console.log(response)
+               state.total = ((Object.entries(response.data.result)).length)
                
-this.setTotal(state , response.data.cart_size)
+             
           
-               
+         
              })
         }  ,
 

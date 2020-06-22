@@ -89,7 +89,6 @@
       ...mapActions(['fetchProducts', 'allCarts']),
 
       added(id, product) {
-        this.$router.push('/cart')
         this.snackbar = true
      
         this.$store.commit('setCart' , id)

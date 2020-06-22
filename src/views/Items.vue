@@ -78,6 +78,9 @@ export default {
              }).then(res =>{
                console.log(res)
              })
+
+             this.$store.commit('setZero')
+             
              this.$forceUpdate()
              this.$router.push('/')
         },
